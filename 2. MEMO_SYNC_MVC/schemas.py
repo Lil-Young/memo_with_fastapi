@@ -1,3 +1,5 @@
+# Pydantic의 BaseModel 관련 코드
+
 from pydantic import BaseModel
 from typing import Optional
 
