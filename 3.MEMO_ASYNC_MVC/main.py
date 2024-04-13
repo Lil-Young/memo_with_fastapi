@@ -2,16 +2,21 @@ from fastapi import FastAPI, Request
 from starlette.middleware.sessions import SessionMiddleware
 from fastapi.templating import Jinja2Templates
 from database import engine, Base
-from controllers import router
+from controllers.router import router
+from controllers.memos import memos
+from contextlib import asynccontextmanager
 
-app = FastAPI()
+@asynccontextmanager
+async def app_lifespan(app: FastAPI):
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    yield
+
+# Swagger UI와 Redoc 도 비활성화합니다.
+app = FastAPI(lifespan=app_lifespan, docs_url=None, redoc_url=None)
 app.add_middleware(SessionMiddleware, secret_key = "ddddd")
-
-# 데이터베이스의 테이블을 만드는 부분 정도는 맨 처음에 객체를 만들자마자 한 번 실행이 돼야하므로 controller에 넣어도 상관없을거 같다.
-Base.metadata.create_all(bind=engine)
-
 app.include_router(router)
-
+app.include_router(memos)
 templates = Jinja2Templates(directory='templates')
 
 @app.get('/')
