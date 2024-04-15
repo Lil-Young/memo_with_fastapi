@@ -1,10 +1,16 @@
-from pydantic import BaseSettings
+import os
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 class Settings(BaseSettings):
-    mysql_uri: str
+    mysql_uri: str = "dd"
+    test_env: str
 
-    class Config:
-        env_file = ".env"
+    model_config = SettingsConfigDict(
+        env_file=BASE_DIR + '/.env',
+        env_file_encoding='utf-8',
+    )
 
-settings = Settings()
-print(settings.mysql_uri)
+a = Settings()
+print(a.mysql_uri)
