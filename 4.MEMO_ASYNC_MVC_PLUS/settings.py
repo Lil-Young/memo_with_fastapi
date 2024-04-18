@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 class Settings(BaseSettings):
-    mysql_uri: str
+    mysql_url: str
     test_env: str = "test value입니다."
 
     model_config = SettingsConfigDict(

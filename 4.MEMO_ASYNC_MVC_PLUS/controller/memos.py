@@ -3,8 +3,8 @@ from fastapi.templating import Jinja2Templates
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from .dependencies import get_db
-from databases.models import User, Memo
-from schemas import MemoCreate, MemoUpdate
+from model.databases.models import User, Memo
+from model.appmodel.schemas import MemoCreate, MemoUpdate
 
 memos = APIRouter()
 templates = Jinja2Templates(directory="templates")

@@ -1,5 +1,5 @@
 from passlib.context import CryptContext
-from databases.database import AsyncSessionLocal
+from model.databases.mysql import AsyncSessionLocal
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

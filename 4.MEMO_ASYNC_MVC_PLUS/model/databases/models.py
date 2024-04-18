@@ -1,6 +1,6 @@
 # 데이터베이스 테이블 Column 관련 모델들
 
-from databases.database import Base
+from model.databases.mysql import Base
 from sqlalchemy import Column, Integer, String, ForeignKey
 
 class User(Base):

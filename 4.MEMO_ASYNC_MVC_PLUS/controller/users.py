@@ -3,8 +3,8 @@ from fastapi.templating import Jinja2Templates
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from .dependencies import get_db, get_password_hash, verify_password
-from databases.models import User
-from schemas import UserCreate, UserLogin
+from model.databases.models import User
+from model.appmodel.schemas import UserCreate, UserLogin
 
 users = APIRouter()
 templates = Jinja2Templates(directory="templates")
