@@ -9,9 +9,8 @@ from settings import Settings
 from module import app_settings
 
 '''
-*** 3.MEMO_ASYNC_MVC에서 수정한 부분 ***
-1. 중요 정보를 .env 파일을 사용하여 관리함
-2. controller, model 폴더를 생성 후 해당 폴더에 해당하는 파일 세분화 
+*** 4.MEMO_ASYNC_MVC에서 수정할 부분 ***
+1. 메모 CRUD를 mongodb로 교체
 '''
 
 
